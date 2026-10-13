@@ -2,13 +2,13 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Deepak Saini | Full-Stack Developer & AI Engineer",
+  title: "Deepak Saini | Full-Stack Development & AI Projects",
   description:
-    "The portfolio of Deepak Saini, a B.Voc IT student exploring full-stack development, AI engineering, and the DIS AI project.",
+    "Portfolio of Deepak Saini, a B.Voc IT student building practical web applications, exploring AI and computer vision, and learning cloud computing through hands-on projects.",
   applicationName: "Deepak Saini Portfolio",
   openGraph: {
     title: "Deepak Saini | Developer Portfolio",
-    description: "Building software, exploring intelligent systems, and learning by creating.",
+    description: "Practical web projects, AI prototypes, and learning labs—documented with honest status and evidence.",
     type: "website",
   },
 };
