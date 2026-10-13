@@ -3,7 +3,7 @@
 import { useState } from "react";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, BrainCircuit, Code2, Cpu,
-  Github, Linkedin, Mail, Menu, Rocket, Sparkles, X
+  Link, Mail, Menu, Rocket, Sparkles, X
 } from "lucide-react";
 
 const skills = [
@@ -59,8 +59,8 @@ export default function Home() {
             <a className="button" href="#contact">Contact me <ArrowUpRight size={17} /></a>
           </div>
           <div className="socials">
-            <a href="https://github.com/sdeepak20072004-hue" target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a>
-            <a href="https://www.linkedin.com/in/deepak-saini-0a384541a" target="_blank" rel="noreferrer"><Linkedin size={17} /> LinkedIn</a>
+            <a href="https://github.com/sdeepak20072004-hue" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
+            <a href="https://www.linkedin.com/in/deepak-saini-0a384541a" target="_blank" rel="noreferrer"><Link size={17} /> LinkedIn</a>
             <a href="mailto:Sdeepak20072004@gmail.com"><Mail size={17} /> Email</a>
           </div>
         </div>
