@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, BrainCircuit, Code2, Cpu,
   Link, Mail, Menu, Rocket, Sparkles, X
@@ -67,7 +68,7 @@ export default function Home() {
 
         <aside className="profile-card">
           <div className="profile-top"><span>Personal profile</span><Sparkles size={19} color="#a5f3fc" /></div>
-          <div className="avatar" aria-label="Deepak Saini initials">DS</div>
+          <div className="avatar"><Image src="/deepak-profile.jpg" alt="Portrait of Deepak Saini" width={384} height={384} priority /></div>
           <h3>Learning. Building. Improving.</h3>
           <p className="school">B.Voc in Information Technology<br />Bhartiya Skill Development University<br /><span className="muted">Jaipur, Rajasthan, India</span></p>
           <div className="mini-grid">
