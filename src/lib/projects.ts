@@ -67,32 +67,6 @@ export const projects: PortfolioProject[] = [
     ]
   },
   {
-    slug: "aegishealth",
-    title: "AegisHealth Connect",
-    category: "HealthTech · AI prototype",
-    status: "Prototype · educational",
-    summary: "A HealthTech exploration with a server-side AI symptom-analysis route intended for preliminary, non-diagnostic information.",
-    stack: ["React", "TypeScript", "Express", "Google GenAI SDK", "API design"],
-    repositoryVisibility: "Private source",
-    overview: "AegisHealth Connect explores how a web interface and a server-side AI route might support a preliminary symptom-information workflow. It is an educational software prototype and is not a medical device or clinical service.",
-    evidence: [
-      "The repository contains a React/Vite frontend foundation and an Express server.",
-      "The server includes an /api/health route and an /api/ai/symptom-analysis route.",
-      "The symptom-analysis handler asks for symptom information and is described in code as preliminary rather than diagnostic."
-    ],
-    limitations: [
-      "Health-related outputs can be wrong or incomplete and must not be treated as diagnosis or treatment advice.",
-      "Use synthetic/demo inputs only; do not add real patient data to a public demo.",
-      "Labels in code about regulatory standards or encryption are not independent proof of compliance or security certification."
-    ],
-    nextMilestones: [
-      "Keep a clear not-medical-advice warning visible in the interface and case study.",
-      "Review input validation, error handling, privacy, retention, and server-side secrets.",
-      "Remove unverified compliance claims unless supported by a real implementation review and appropriate independent evidence."
-    ],
-    safetyNote: "Educational prototype only. It does not provide medical diagnosis, and it must not replace advice from a qualified health professional."
-  },
-  {
     slug: "portfolio-contact-system",
     title: "Portfolio & Contact System",
     category: "Full-stack web · personal product",
