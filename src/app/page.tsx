@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import ContactForm from "@/components/ContactForm";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, BrainCircuit, Code2, Cpu,
   Link, Mail, Menu, Rocket, Sparkles, X
@@ -120,11 +121,16 @@ export default function Home() {
 
       <section id="contact" className="container section">
         <div className="contact-panel">
-          <Rocket size={30} color="#a5f3fc" />
-          <p className="eyebrow" style={{ marginTop: 24 }}>Get in touch</p>
-          <h2>Have an idea? Let&apos;s connect.</h2>
-          <p>I&apos;m interested in learning, collaborating on meaningful projects, and connecting with people who are building useful technology.</p>
-          <a className="button button-primary" href="mailto:Sdeepak20072004@gmail.com?subject=Portfolio%20Enquiry" style={{ marginTop: 16 }}><Mail size={18} /> Email Deepak <ArrowUpRight size={17} /></a>
+          <div className="contact-layout">
+            <div className="contact-intro">
+              <Rocket size={30} color="#a5f3fc" />
+              <p className="eyebrow" style={{ marginTop: 24 }}>Get in touch</p>
+              <h2>Have an idea? Let&apos;s connect.</h2>
+              <p>I&apos;m interested in learning, collaborating on meaningful projects, and connecting with people who are building useful technology.</p>
+              <p className="contact-direct">You can also reach me directly at <a href="mailto:Sdeepak20072004@gmail.com">Sdeepak20072004@gmail.com</a>.</p>
+            </div>
+            <ContactForm />
+          </div>
         </div>
       </section>
 
