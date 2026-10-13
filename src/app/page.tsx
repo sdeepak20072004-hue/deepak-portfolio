@@ -176,13 +176,7 @@ export default function Home() {
             <p>Next practical evidence: deploy a small app, keep secrets out of source control, check a health endpoint and logs, inspect usage, then document how resources are stopped or removed.</p>
             <a className="text-link" href="https://learn.microsoft.com/en-us/learn/paths/azure-fundamentals/" target="_blank" rel="noreferrer">Official Azure fundamentals learning path <ArrowUpRight size={16} /></a>
           </article>
-          <article className="lab-card">
-            <div className="lab-icon"><Sparkles size={22} /></div>
-            <span className="lab-state">Experiments</span>
-            <h3>Hindi AI videos &amp; editing</h3>
-            <p>Exploring short-form explainers, scripts, real-camera delivery, captions, and AI-assisted editing. Only published clips and actual before/after examples will be presented as proof.</p>
-            <a className="text-link" href="#contact">Ask about a content collaboration <ArrowUpRight size={16} /></a>
-          </article>
+
           <article className="lab-card">
             <div className="lab-icon"><Rocket size={22} /></div>
             <span className="lab-state">Next step</span>
