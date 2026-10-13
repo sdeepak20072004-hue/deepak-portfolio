@@ -41,7 +41,8 @@ button, input, textarea { font: inherit; }
 .socials a { display:inline-flex; align-items:center; gap:8px; }
 .profile-card { position:relative; padding:30px; border:1px solid rgba(255,255,255,.1); border-radius:30px; background:#101116; box-shadow:0 30px 90px #0006; }
 .profile-top { display:flex; justify-content:space-between; color:#71717a; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; }
-.avatar { display:grid; place-items:center; width:138px; height:138px; margin:36px auto 24px; border:1px solid #a5f3fc44; border-radius:40px; background:linear-gradient(145deg,#67e8f91c,#a78bfa14); font-size:4rem; font-weight:700; letter-spacing:-.08em; color:#cffafe; box-shadow:0 0 65px #67e8f90b; }
+.avatar { display:grid; place-items:center; overflow:hidden; width:138px; height:138px; margin:36px auto 24px; padding:0; border:1px solid #a5f3fc44; border-radius:40px; background:linear-gradient(145deg,#67e8f91c,#a78bfa14); font-size:4rem; font-weight:700; letter-spacing:-.08em; color:#cffafe; box-shadow:0 0 65px #67e8f90b; }
+.avatar img { display:block; width:100%; height:100%; object-fit:cover; object-position:center 24%; border-radius:inherit; }
 .profile-card h3 { margin:0; text-align:center; font-size:1.35rem; }
 .profile-card .school { text-align:center; color:#a1a1aa; line-height:1.8; font-size:.88rem; }
 .mini-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:26px; padding-top:24px; border-top:1px solid #ffffff12; }
