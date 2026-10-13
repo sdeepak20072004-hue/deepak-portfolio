@@ -185,10 +185,10 @@ export default function Home() {
           </article>
           <article className="lab-card">
             <div className="lab-icon"><Rocket size={22} /></div>
-            <span className="lab-state">Verify before featuring</span>
-            <h3>Small-business website builds</h3>
-            <p>ElliFashion and OM Mobile were discussed as friend/business website projects. Their current build status and demos need to be checked before they are described as completed client work.</p>
-            <a className="text-link" href="#contact">Discuss a website idea <ArrowUpRight size={16} /></a>
+            <span className="lab-state">Next step</span>
+            <h3>Project testing &amp; documentation</h3>
+            <p>For the three featured projects, I am building a repeatable checklist for type checks, linting, production builds, setup steps, and verified demo recordings.</p>
+            <a className="text-link" href="#projects">Review the three case studies <ArrowUpRight size={16} /></a>
           </article>
         </div>
       </section>
