@@ -144,7 +144,7 @@ export const projects: PortfolioProject[] = [
     overview:
       "DIS AI (Deepak IT Solutions AI) is a long-term platform project. Its product direction includes specialised agents, memory, knowledge, workflows, integrations, and future compute work. The public-safe case study focuses on the documented foundation and separates it from capabilities that remain planned or under active development.",
     architecture:
-      "Current documented foundation: Python / FastAPI backend setup + PostgreSQL architecture + monorepo conventions. Future architecture areas include agents, knowledge, memory, workflows, observability, security, and compute. These future areas are roadmap boundaries—not proof that every service is already implemented.",
+      "Documented foundation: Python / FastAPI backend → PostgreSQL architecture → monorepo service boundaries → Future roadmap: agents / knowledge / memory / workflows / observability / security / compute (planned)",
     tools: [
       {
         name: "Python",
