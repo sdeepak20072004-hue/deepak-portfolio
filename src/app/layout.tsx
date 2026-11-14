@@ -2,19 +2,26 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Deepak Saini | Full-Stack Development & AI Projects",
+  title: "Deepak Saini | Full-Stack Developer & AI Project Portfolio",
   description:
-    "Portfolio of Deepak Saini, a B.Voc IT student building practical web applications, exploring AI and computer vision, and learning cloud computing through hands-on projects.",
+    "Explore Deepak Saini's practical software projects, AI and computer-vision prototypes, tool stacks, engineering workflows, and evidence-led project case studies.",
   applicationName: "Deepak Saini Portfolio",
   openGraph: {
     title: "Deepak Saini | Developer Portfolio",
-    description: "Practical web projects, AI prototypes, and learning labs—documented with honest status and evidence.",
+    description:
+      "Full-stack development, AI experiments, computer-vision prototypes, and detailed engineering case studies.",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Deepak Saini | Developer Portfolio",
+    description:
+      "Practical projects, technology stacks, and engineering workflows—documented with honest status and evidence.",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08090c",
+  themeColor: "#07080d",
   width: "device-width",
   initialScale: 1,
 };
