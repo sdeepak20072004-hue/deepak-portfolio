@@ -1,45 +1,58 @@
-# Deepak Saini — Portfolio
+# Deepak Saini — Developer Portfolio
 
-A responsive personal portfolio for showcasing Deepak's learning journey in full-stack development and AI engineering.
+A responsive, evidence-led portfolio built with Next.js, React, and TypeScript. It presents project case studies with architecture summaries, tool roles, implementation pipelines, limitations, and next milestones.
 
-## Tech stack
+## Technology stack
 
 - Next.js App Router
-- TypeScript
+- React and TypeScript
 - Tailwind CSS 4
-- Lucide React
+- Lucide React icons
 - Zod validation for contact submissions
+- Resend API integration for server-side email delivery
 
 ## Run locally
 
-```powershell
+\`\`\`powershell
 npm install
 npm run dev
-```
+\`\`\`
 
 Open http://localhost:3000.
+
+## Portfolio case studies
+
+- **VisionFX** — private computer-vision / AR-VFX prototype. The case study distinguishes declared React, TypeScript, Vite, MediaPipe, Express, and Google GenAI SDK dependencies from runtime behavior that still needs end-to-end verification.
+- **DIS AI** — private AI platform foundation. The case study separates documented Python, FastAPI, PostgreSQL, and monorepo foundations from future agents, memory, knowledge, workflow, and compute areas.
+- **Portfolio & Contact System** — public Next.js project. The contact path documents the React form, server route, Zod validation, honeypot, in-memory throttle, and Resend provider configuration.
+
+Private source code and secrets are intentionally not exposed by public case studies.
 
 ## Contact form email setup
 
 The contact form API validates submissions server-side and sends email through Resend. Email delivery stays disabled until environment variables are configured.
 
-1. Copy `.env.example` to `.env.local`.
-2. Add your Resend API key to `RESEND_API_KEY`.
-3. Set `CONTACT_FROM_EMAIL` to a sender address/domain allowed by your Resend account.
-4. Set `CONTACT_TO_EMAIL` to the inbox where you want portfolio enquiries.
+1. Copy \`.env.example\` to \`.env.local\`.
+2. Add your Resend API key to \`RESEND_API_KEY\`.
+3. Set \`CONTACT_FROM_EMAIL\` to a sender address/domain allowed by your Resend account.
+4. Set \`CONTACT_TO_EMAIL\` to the inbox where you want portfolio enquiries.
 5. Restart the dev server after changing environment variables.
 
-Do not commit `.env.local`, expose keys in `NEXT_PUBLIC_*` variables, or share API keys in chat/screenshots. The example file is safe to commit because it contains placeholders only.
+Do not commit \`.env.local\`, expose keys in \`NEXT_PUBLIC_*\` variables, or share API keys in chat/screenshots. The example file is safe to commit because it contains placeholders only.
 
 The route includes input validation, a honeypot field, and a small in-memory throttle for development. That throttle is per-process and is not sufficient as production-grade abuse protection on serverless/multi-instance hosting; before public launch, add a shared rate limiter and/or CAPTCHA/Turnstile and test provider delivery.
 
 ## Quality checks
 
-```powershell
+The scripts below are defined in \`package.json\`. Run them on the current code and review the result before release:
+
+\`\`\`powershell
 npm run typecheck
 npm run lint
 npm run build
-```
+\`\`\`
+
+No automated test suite or production deployment is claimed until those checks and the live contact flow have been run and recorded.
 
 ## Project status
 
