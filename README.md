@@ -89,7 +89,7 @@ An experimental AR/VFX workspace exploring camera-based gestures, computer-visio
 
 **High-level implementation pipeline**
 
-\`\`\`text
+```text
 Browser UI
    |
    v
@@ -109,7 +109,7 @@ Allowlisted visual-effect intent
    |
    v
 UI action (end-to-end verification required)
-\`\`\`
+```
 
 **Verification notes**
 
@@ -137,7 +137,7 @@ DIS AI (Deepak IT Solutions AI) is a long-term AI platform project. This case st
 
 **High-level architecture**
 
-\`\`\`text
+```text
 DOCUMENTED FOUNDATION
 Python / FastAPI backend
           |
@@ -150,7 +150,7 @@ Monorepo service boundaries
 FUTURE ROADMAP (planned / under development)
 Agents - Knowledge - Memory - Workflows
 Observability - Security - Compute
-\`\`\`
+```
 
 **Status notes**
 
@@ -178,7 +178,7 @@ This portfolio is also a practical full-stack project. It uses a React contact f
 
 **Contact request pipeline**
 
-\`\`\`text
+```text
 Contact form
     |
     v
@@ -201,7 +201,7 @@ Resend API (server-side credentials)
     |
     v
 Success / error response in the form
-\`\`\`
+```
 
 **Current limitations**
 
@@ -246,7 +246,7 @@ The portfolio uses the Next.js App Router. The main UI lives in <code>src/app</c
 <details>
 <summary><strong>View repository structure</strong></summary>
 
-\`\`\`text
+```text
 deepak-portfolio/
 ├── public/
 │   └── deepak-profile.jpg
@@ -270,13 +270,13 @@ deepak-portfolio/
 ├── next.config.ts
 ├── package.json
 └── tsconfig.json
-\`\`\`
+```
 
 </details>
 
 ### Project case-study data flow
 
-\`\`\`text
+```text
 src/lib/projects.ts
        |
        +-------------> Homepage project cards
@@ -289,7 +289,7 @@ src/lib/projects.ts
                             +-- Implementation pipeline
                             +-- Limitations
                             +-- Next milestones
-\`\`\`
+```
 
 ## Run locally
 
@@ -301,33 +301,33 @@ src/lib/projects.ts
 
 ### 1. Clone the repository
 
-\`\`\`powershell
+```powershell
 git clone https://github.com/sdeepak20072004-hue/deepak-portfolio.git
 cd deepak-portfolio
-\`\`\`
+```
 
 ### 2. Install dependencies
 
-\`\`\`powershell
+```powershell
 npm install
-\`\`\`
+```
 
 ### 3. Start the development server
 
-\`\`\`powershell
+```powershell
 npm run dev
-\`\`\`
+```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### 4. Create and run a production build
 
-\`\`\`powershell
+```powershell
 npm run typecheck
 npm run lint
 npm run build
 npm run start
-\`\`\`
+```
 
 The production server uses the build created by the build command.
 
