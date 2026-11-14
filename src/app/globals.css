@@ -600,3 +600,10 @@ body::before {
   .enhanced-profile { animation: none; transform: none; }
   .work-card:hover, .hero-socials a:hover { transform: none; }
 }
+
+
+/* Keyboard and focus visibility */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid #8cebf6;
+  outline-offset: 4px;
+}
