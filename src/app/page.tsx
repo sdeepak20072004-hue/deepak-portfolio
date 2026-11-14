@@ -4,43 +4,79 @@ import { useState } from "react";
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import {
-  ArrowDown, ArrowRight, ArrowUpRight, BrainCircuit, Code2, Cpu,
-  Link, Mail, Menu, Rocket, Sparkles, X
+  ArrowDown, ArrowRight, ArrowUpRight, BadgeCheck, BrainCircuit, Check,
+  Code2, GitBranch, Layers3, Link, Mail, Menu, Rocket, Sparkles,
+  Terminal, Workflow, X, Zap,
 } from "lucide-react";
 import { projects } from "@/lib/projects";
 
 const navItems = [
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Learning labs", href: "#labs" },
+  { label: "Tech stack", href: "#stack" },
+  { label: "Workflow", href: "#workflow" },
   { label: "Contact", href: "#contact" },
 ];
 
-const skillGroups = [
+const stackGroups = [
   {
-    title: "Frontend & product UI",
-    status: "Built in portfolio / prototypes",
-    items: ["HTML & CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"],
-    note: "Responsive UI, component-based pages, and accessible form structure.",
+    id: "01",
+    title: "Frontend & experience",
+    level: "Building with",
+    description: "Responsive interfaces, component-driven pages, and practical web experiences.",
+    tools: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"],
+    accent: "cyan",
   },
   {
+    id: "02",
     title: "Backend & integration",
-    status: "Repository evidence",
-    items: ["Node.js", "Express", "REST-style routes", "Zod validation", "Resend API", "Environment variables"],
-    note: "Server routes and input validation are present; email delivery still needs its final provider test.",
+    level: "Project evidence",
+    description: "Server routes, structured request validation, and external API integration.",
+    tools: ["Node.js", "Express", "REST APIs", "FastAPI foundation", "Zod", "Resend API"],
+    accent: "violet",
   },
   {
+    id: "03",
     title: "AI & computer vision",
-    status: "Prototype territory",
-    items: ["Google GenAI SDK", "MediaPipe packages", "Face / hand / pose tracking", "AI feature experiments"],
-    note: "These appear in private prototypes. Each visible feature must be tested before being marked as shipped.",
+    level: "Prototype / learning",
+    description: "Exploring camera input, vision signals, and AI-assisted application workflows.",
+    tools: ["MediaPipe", "Google GenAI SDK", "Machine learning", "Deep learning", "LLMs"],
+    accent: "pink",
   },
   {
-    title: "Foundations in progress",
-    status: "Learning & practical labs",
-    items: ["Python", "FastAPI", "PostgreSQL", "Machine learning", "Deep learning", "Cloud computing"],
-    note: "The next step is to link each learning area to a small, repeatable hands-on lab.",
+    id: "04",
+    title: "Data, cloud & developer tools",
+    level: "Learning foundations",
+    description: "Building practical foundations for data, deployment, and repeatable development.",
+    tools: ["Python", "PostgreSQL", "Git", "GitHub", "Linux", "Cloud computing", "AWS", "Azure"],
+    accent: "blue",
+  },
+];
+
+const workflow = [
+  {
+    number: "01",
+    title: "Understand",
+    description: "Turn an idea into a small problem statement, user flow, and first milestone.",
+    icon: BrainCircuit,
+  },
+  {
+    number: "02",
+    title: "Build",
+    description: "Choose a focused stack, implement the smallest useful version, and keep the code readable.",
+    icon: Code2,
+  },
+  {
+    number: "03",
+    title: "Verify",
+    description: "Run type checks, linting, production builds, and manual feature tests. Record what passed.",
+    icon: BadgeCheck,
+  },
+  {
+    number: "04",
+    title: "Document",
+    description: "Explain architecture, dependencies, limitations, setup steps, and the next milestone.",
+    icon: Layers3,
   },
 ];
 
@@ -52,61 +88,113 @@ export default function Home() {
       <header className="site-header">
         <nav className="container nav" aria-label="Main navigation">
           <a href="#home" className="brand" onClick={() => setMenuOpen(false)}>
-            <span className="brand-mark">DS</span>
-            <span><span className="brand-name">Deepak Saini</span><br /><small className="brand-sub muted">Developer Portfolio</small></span>
+            <span className="brand-mark">DS<span className="brand-mark-dot" /></span>
+            <span>
+              <span className="brand-name">Deepak Saini</span>
+              <br />
+              <small className="brand-sub muted">Developer · Builder · Learner</small>
+            </span>
           </a>
           <div className="nav-links">
             {navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
           </div>
           <a className="button nav-contact" href="#contact">Let&apos;s talk <ArrowUpRight size={16} /></a>
-          <button className="mobile-menu" type="button" aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+          <button
+            className="mobile-menu"
+            type="button"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </nav>
-        {menuOpen && <div className="mobile-nav">{navItems.map((item) => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</a>)}</div>}
+        {menuOpen && (
+          <div className="mobile-nav">
+            {navItems.map((item) => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</a>)}
+          </div>
+        )}
       </header>
 
-      <section id="home" className="container hero">
+      <section id="home" className="container hero hero-advanced">
         <div className="hero-content">
-          <span className="pill"><span className="pulse" /> B.Voc IT Student · Learning by building</span>
-          <p className="eyebrow" style={{ marginTop: 32 }}>Hello, I&apos;m</p>
-          <h1>Deepak<br /><span className="gradient-text">Saini.</span></h1>
-          <h2>Full-Stack Development <span className="muted">&amp;</span><br />AI Engineering Experiments</h2>
-          <p className="hero-copy">I build and test web experiences, explore AI and computer-vision prototypes, and document what I learn. My long-term project is DIS AI—a private, evolving platform foundation.</p>
+          <span className="pill hero-pill"><span className="pulse" /> B.Voc IT Student <span className="pill-separator">/</span> Learning by building</span>
+          <p className="eyebrow hero-kicker">Hello, I&apos;m Deepak</p>
+          <h1 className="hero-name">Building ideas<br />into <span className="gradient-text">real software.</span></h1>
+          <h2 className="hero-role">Full-Stack Development <span className="muted">&amp;</span> AI Experiments</h2>
+          <p className="hero-copy">
+            I build and test web experiences, explore AI and computer-vision prototypes, and document the engineering behind my work. My focus is learning in public through practical projects—not just listing technologies.
+          </p>
           <div className="actions">
-            <a className="button button-primary" href="#projects">Explore project evidence <ArrowRight size={18} /></a>
-            <a className="button" href="#contact">Contact me <ArrowUpRight size={17} /></a>
+            <a className="button button-primary" href="#projects">Explore my projects <ArrowRight size={18} /></a>
+            <a className="button button-ghost" href="#contact">Let&apos;s connect <ArrowUpRight size={17} /></a>
           </div>
-          <div className="socials">
+          <div className="socials hero-socials">
             <a href="https://github.com/sdeepak20072004-hue" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
             <a href="https://www.linkedin.com/in/deepak-saini-0a384541a" target="_blank" rel="noreferrer"><Link size={17} /> LinkedIn</a>
             <a href="mailto:Sdeepak20072004@gmail.com"><Mail size={17} /> Email</a>
           </div>
-          <div className="hero-proof">
-            <span><strong>Build</strong> small and real</span>
-            <span><strong>Test</strong> what works</span>
-            <span><strong>Document</strong> the evidence</span>
+          <div className="hero-principles">
+            <span><i /> Build</span>
+            <span><i /> Test</span>
+            <span><i /> Document</span>
+            <span><i /> Improve</span>
           </div>
         </div>
 
-        <aside className="profile-card">
-          <div className="profile-top"><span>Developer profile</span><Sparkles size={19} color="#a5f3fc" /></div>
-          <div className="avatar"><Image src="/deepak-profile.jpg" alt="Portrait of Deepak Saini" width={384} height={384} priority /></div>
-          <h3>Learning. Building. Improving.</h3>
-          <p className="school">B.Voc in Information Technology<br />Bhartiya Skill Development University<br /><span className="muted">Jaipur, Rajasthan, India</span></p>
-          <div className="mini-grid">
-            <div className="mini"><Code2 size={21} color="#a5f3fc" /><strong>Full-Stack</strong><span>Web applications</span></div>
-            <div className="mini"><BrainCircuit size={21} color="#c4b5fd" /><strong>AI &amp; CV</strong><span>Prototypes &amp; learning</span></div>
-          </div>
-          <p className="profile-note">Project status is stated honestly: built, prototype, or learning in progress.</p>
-        </aside>
-        <a href="#about" aria-label="Scroll to about section" className="scroll-cue"><ArrowDown size={20} /></a>
+        <div className="hero-visual">
+          <div className="visual-aura visual-aura-one" />
+          <div className="visual-aura visual-aura-two" />
+          <aside className="profile-card enhanced-profile">
+            <div className="profile-top">
+              <span><span className="live-dot" /> Developer profile</span>
+              <span className="profile-index">DS / 2026</span>
+            </div>
+            <div className="profile-main">
+              <div className="avatar"><Image src="/deepak-profile.jpg" alt="Portrait of Deepak Saini" width={384} height={384} priority /></div>
+              <div className="profile-identity">
+                <h3>Deepak Saini</h3>
+                <p>B.Voc · Information Technology</p>
+                <span>Bhartiya Skill Development University</span>
+                <span>Jaipur, Rajasthan, India</span>
+              </div>
+            </div>
+            <div className="profile-focus">
+              <div><Code2 size={17} /><span>Full-Stack</span><small>Web applications</small></div>
+              <div><BrainCircuit size={17} /><span>AI & Computer Vision</span><small>Prototypes & learning</small></div>
+            </div>
+            <div className="terminal-card">
+              <div className="terminal-bar">
+                <span className="terminal-lights"><i /><i /><i /></span>
+                <span>engineering-notes.txt</span>
+                <Terminal size={14} />
+              </div>
+              <div className="terminal-lines">
+                <p><b>01</b><span className="terminal-green">Build</span><em>small and real</em></p>
+                <p><b>02</b><span className="terminal-blue">Test</span><em>what works</em></p>
+                <p><b>03</b><span className="terminal-purple">Document</span><em>the evidence</em></p>
+              </div>
+            </div>
+            <div className="profile-bottom"><span>Curious by nature</span><span>Consistent by practice <Sparkles size={14} /></span></div>
+          </aside>
+          <div className="floating-chip chip-top"><Zap size={15} /> Practical learning</div>
+          <div className="floating-chip chip-bottom"><GitBranch size={15} /> Project-first mindset</div>
+        </div>
+
+        <a href="#about" aria-label="Scroll to about section" className="scroll-cue"><ArrowDown size={19} /></a>
+      </section>
+
+      <section className="container proof-strip" aria-label="Portfolio overview">
+        <div><strong>03</strong><span>Featured projects</span></div>
+        <div><strong>02</strong><span>Private case studies</span></div>
+        <div><strong>01</strong><span>Public codebase</span></div>
+        <div className="proof-note"><Sparkles size={16} /> Evidence over exaggeration</div>
       </section>
 
       <section id="about" className="section section-alt">
         <div className="container about-grid">
-          <div>
-            <p className="eyebrow">About me</p>
+          <div className="about-heading">
+            <p className="eyebrow"><span>01</span> / About me</p>
             <h2 className="about-title">I want my work to be easy to inspect—not just easy to describe.</h2>
           </div>
           <div className="about-copy">
@@ -122,92 +210,121 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="container section">
-        <div className="section-heading">
-          <p className="eyebrow">Selected work</p>
-          <h2>Projects, with status and evidence.</h2>
-          <p>Some projects are private and still in progress. Each case study separates what the repository contains from what still needs end-to-end testing.</p>
+      <section id="projects" className="container section project-section">
+        <div className="section-heading section-heading-wide">
+          <div>
+            <p className="eyebrow"><span>02</span> / Selected work</p>
+            <h2>Projects with real context, tools, and pipelines.</h2>
+          </div>
+          <p>Open a case study to inspect its architecture, dependencies, implementation flow, repository evidence, limitations, and next milestones.</p>
         </div>
-        <div className="project-list-grid">
+        <div className="project-list-grid project-list-advanced">
           {projects.map((project, index) => (
-            <article className="work-card" key={project.slug}>
-              <div className="work-card-top"><span className="work-number">{String(index + 1).padStart(2, "0")}</span><span className="status-pill">{project.status}</span></div>
+            <article className={"work-card work-card-" + (index + 1)} key={project.slug}>
+              <div className="work-card-top">
+                <span className="work-number">{String(index + 1).padStart(2, "0")} <span>/ 03</span></span>
+                <span className="status-pill">{project.status}</span>
+              </div>
               <p className="work-category">{project.category}</p>
               <h3>{project.title}</h3>
               <p className="work-summary">{project.summary}</p>
-              <div className="tech-tags">{project.stack.slice(0, 5).map((item) => <span key={item}>{item}</span>)}</div>
-              <a className="text-link" href={"/projects/" + project.slug}>Read case study <ArrowUpRight size={16} /></a>
+              <div className="tech-tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
+              <div className="card-pipeline">
+                <div className="card-pipeline-head"><Workflow size={15} /><span>PIPELINE SNAPSHOT</span></div>
+                {project.pipeline.slice(0, 3).map((stage) => (
+                  <div className="card-pipeline-step" key={stage.step}>
+                    <b>{stage.step}</b><span>{stage.title}</span>
+                    <i className={"state-dot state-" + (stage.state === "repository evidence" ? "verified" : stage.state === "prototype / verify" ? "review" : "planned")} />
+                  </div>
+                ))}
+              </div>
+              <a className="text-link" href={"/projects/" + project.slug}>Explore full case study <ArrowUpRight size={16} /></a>
             </article>
           ))}
         </div>
-        <p className="section-footnote">Private repositories stay private. Public case studies share the project purpose, safe architecture notes, verification status, and next milestones—not secrets or private source code.</p>
+        <p className="section-footnote">Private repositories stay private. Public case studies share project purpose, safe architecture notes, verification status, and next milestones—not secrets or private source code.</p>
       </section>
 
-      <section id="skills" className="section section-alt">
+      <section id="stack" className="section section-alt">
         <div className="container">
-          <div className="section-heading">
-            <p className="eyebrow">Skills &amp; evidence</p>
-            <h2>What I&apos;m using—and what I&apos;m learning.</h2>
-            <p>Skill labels reflect the current evidence level instead of suggesting expert-level proficiency in every technology.</p>
+          <div className="section-heading section-heading-wide">
+            <div>
+              <p className="eyebrow"><span>03</span> / Technology map</p>
+              <h2>The tools behind what I&apos;m building.</h2>
+            </div>
+            <p>Each group shows the technologies connected to my projects and learning roadmap. The labels distinguish repository evidence from areas I&apos;m still learning.</p>
           </div>
-          <div className="skill-groups">
-            {skillGroups.map((group) => (
-              <article className="skill-group" key={group.title}>
-                <div className="skill-group-heading"><h3>{group.title}</h3><span>{group.status}</span></div>
-                <div className="skill-pills">{group.items.map((item) => <span key={item}>{item}</span>)}</div>
-                <p>{group.note}</p>
+          <div className="stack-grid">
+            {stackGroups.map((group) => (
+              <article className={"stack-card stack-" + group.accent} key={group.id}>
+                <div className="stack-card-top"><span>{group.id} / TOOLKIT</span><span>{group.level}</span></div>
+                <h3>{group.title}</h3>
+                <p>{group.description}</p>
+                <div className="stack-tags">{group.tools.map((tool) => <span key={tool}>{tool}</span>)}</div>
               </article>
             ))}
           </div>
+          <div className="stack-legend">
+            <span><i className="legend-evidence" /> Repository / documented foundation</span>
+            <span><i className="legend-learning" /> Learning / in progress</span>
+          </div>
         </div>
       </section>
 
-      <section id="labs" className="container section">
+      <section id="workflow" className="container section workflow-section">
         <div className="section-heading">
-          <p className="eyebrow">Learning labs</p>
-          <h2>Turning lessons into practical proof.</h2>
-          <p>These are active learning tracks, not completed professional experience. Published results will be added as each lab is finished and tested.</p>
+          <p className="eyebrow"><span>04</span> / Engineering workflow</p>
+          <h2>From first idea to verified evidence.</h2>
+          <p>A repeatable workflow for every project. A check is only called passed after it has actually been run and reviewed.</p>
         </div>
-        <div className="lab-grid">
-          <article className="lab-card">
-            <div className="lab-icon"><Cpu size={22} /></div>
-            <span className="lab-state">In progress</span>
-            <h3>Cloud computing &amp; deployment</h3>
-            <p>Next practical evidence: deploy a small app, keep secrets out of source control, check a health endpoint and logs, inspect usage, then document how resources are stopped or removed.</p>
-            <a className="text-link" href="https://learn.microsoft.com/en-us/learn/paths/azure-fundamentals/" target="_blank" rel="noreferrer">Official Azure fundamentals learning path <ArrowUpRight size={16} /></a>
-          </article>
-
-          <article className="lab-card">
-            <div className="lab-icon"><Rocket size={22} /></div>
-            <span className="lab-state">Next step</span>
-            <h3>Project testing &amp; documentation</h3>
-            <p>For the three featured projects, I am building a repeatable checklist for type checks, linting, production builds, setup steps, and verified demo recordings.</p>
-            <a className="text-link" href="#projects">Review the three case studies <ArrowUpRight size={16} /></a>
-          </article>
+        <div className="workflow-grid">
+          {workflow.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article className="workflow-card" key={item.number}>
+                <div className="workflow-card-top"><span>{item.number}</span><Icon size={22} /></div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            );
+          })}
         </div>
+        <div className="quality-panel">
+          <div className="quality-copy">
+            <p className="eyebrow">Portfolio release gates</p>
+            <h3>Before a public release</h3>
+            <p>These quality-check commands are defined in the project package scripts. Run them on the latest code and record the actual result before calling a release verified.</p>
+          </div>
+          <div className="quality-commands">
+            <div><span className="command-index">01</span><code>npm run typecheck</code><span>TypeScript check</span></div>
+            <div><span className="command-index">02</span><code>npm run lint</code><span>Code quality</span></div>
+            <div><span className="command-index">03</span><code>npm run build</code><span>Production build</span></div>
+          </div>
+        </div>
+        <div className="release-note"><span className="release-note-icon"><Check size={15} /></span><p><strong>Honest release notes:</strong> no automated test suite or production deployment is claimed here unless a real run confirms it. Contact email delivery also needs a live Resend inbox test.</p></div>
       </section>
 
       <section className="section section-alt">
         <div className="container approach-grid">
           <div>
-            <p className="eyebrow">My working method</p>
+            <p className="eyebrow"><span>05</span> / Working principles</p>
             <h2 className="about-title">Learn it. Build it. Test it. Explain it.</h2>
           </div>
           <div className="approach-steps">
             <div><span>01</span><p><strong>Understand the problem</strong><br />Define a real user need and a small first milestone.</p></div>
             <div><span>02</span><p><strong>Build a working version</strong><br />Choose the simplest tools that meet the goal.</p></div>
-            <div><span>03</span><p><strong>Test and debug</strong><br />Run checks, verify the behavior, and record limitations.</p></div>
+            <div><span>03</span><p><strong>Test and debug</strong><br />Run checks, verify behavior, and record limitations.</p></div>
             <div><span>04</span><p><strong>Publish the evidence</strong><br />Share a demo, setup notes, architecture, and next steps.</p></div>
           </div>
         </div>
       </section>
 
       <section id="contact" className="container section">
-        <div className="contact-panel">
+        <div className="contact-panel contact-panel-advanced">
           <div className="contact-layout">
             <div className="contact-intro">
-              <Rocket size={30} color="#a5f3fc" />
-              <p className="eyebrow" style={{ marginTop: 24 }}>Get in touch</p>
+              <div className="contact-orb"><Rocket size={25} /></div>
+              <p className="eyebrow">06 / Get in touch</p>
               <h2>Have an idea? Let&apos;s build something useful.</h2>
               <p>I&apos;m interested in practical software projects, learning with other developers, and conversations about AI, web development, and technology.</p>
               <p className="contact-direct">You can also reach me directly at <a href="mailto:Sdeepak20072004@gmail.com">Sdeepak20072004@gmail.com</a>.</p>
@@ -217,11 +334,16 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="footer">
+      <footer className="footer footer-advanced">
         <div className="container footer-inner">
-          <span>© {new Date().getFullYear()} Deepak Saini. Built with Next.js.</span>
-          <div className="footer-links"><a href="https://github.com/sdeepak20072004-hue" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/deepak-saini-0a384541a" target="_blank" rel="noreferrer">LinkedIn</a><a href="#home">Back to top ↑</a></div>
+          <div className="footer-brand"><span className="brand-mark">DS</span><span>Deepak Saini <small>Building through curiosity.</small></span></div>
+          <div className="footer-links">
+            <a href="https://github.com/sdeepak20072004-hue" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/deepak-saini-0a384541a" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="#home">Back to top ↑</a>
+          </div>
         </div>
+        <div className="container footer-bottom"><span>© {new Date().getFullYear()} Deepak Saini</span><span>Designed with intent · Built with Next.js</span></div>
       </footer>
     </main>
   );
